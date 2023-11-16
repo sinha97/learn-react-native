@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "93711043168",
+    "project_id": "instasocial-ractnative",
+    "storage_bucket": "instasocial-ractnative.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:93711043168:android:33ab9ef7ea2b8b37f81105",
+        "android_client_info": {
+          "package_name": "com.instasocial"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBm7U5N1cEAkWt5PDbN-okeFTg0VeJqt6g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
