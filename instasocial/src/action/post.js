@@ -1,7 +1,7 @@
 import database from '@react-native-firebase/database';
 import {SET_POST, ERROR_POST} from './action.types';
 
-export const getPosts = () => async dispatch => {
+export const getPosts = () => async (dispatch) => {
   try {
     database()
       .ref('/posts/')
