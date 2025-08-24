@@ -29,7 +29,6 @@ const Login = () => {
     <ScreenWrapper>
       <View style={styles.container}>
         <BackButton iconSize={28} />
-
         <View style={{ gap: 5, marginTop: spacingY._20 }}>
           <Typo size={30} fontWeight={"800"}>
             Hey,
@@ -38,12 +37,10 @@ const Login = () => {
             Welcome Back
           </Typo>
         </View>
-
         <View style={styles.form}>
           <Typo size={16} color={colors.textLighter}>
             Login now to track all your expenses
           </Typo>
-
           <Input
             placeholder="Enter your email"
             onChangeText={(text) => (emailRef.current = text)}
@@ -78,7 +75,7 @@ const Login = () => {
         </View>
         <View style={styles.footer}>
           <Typo size={15}>{"Don't have an account?"}</Typo>
-          <Pressable onPress={() => router.navigate("/(auth)/register")}>
+          <Pressable onPress={() => router.replace("/(auth)/register")}>
             <Typo size={15} style={styles.footerText}>
               Sign Up
             </Typo>
