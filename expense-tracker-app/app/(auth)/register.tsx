@@ -1,5 +1,5 @@
 import { Alert, Pressable, StyleSheet, Text, View } from "react-native";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import ScreenWrapper from "@/components/ScreenWrapper";
 import Typo from "@/components/Typo";
 import { colors, spacingX, spacingY } from "@/constants/theme";
@@ -9,36 +9,40 @@ import Input from "@/components/Input";
 import * as Icons from "phosphor-react-native";
 import Button from "@/components/Button";
 import { useRouter } from "expo-router";
+import { useAuth } from "@/contexts/authContext";
 
 const Register = () => {
   const emailRef = useRef("");
   const passwordRef = useRef("");
   const nameRef = useRef("");
 
-  const [isLoading, setIsLoading] = React.useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
+  const { register } = useAuth();
 
   const handleSubmit = async () => {
     if (!emailRef.current || !passwordRef.current || !nameRef.current) {
       Alert.alert("Sign Up", "Please fill all the fields");
       return;
     }
-    console.log(
-      "email",
+    setIsLoading(true);
+    const res = await register(
       emailRef.current,
-      "password",
       passwordRef.current,
-      "name",
       nameRef.current
     );
-    console.log("Good to go...");
+    setIsLoading(false);
+    console.log("res detail", res);
+    if (!res.success) {
+      Alert.alert("Sign Up", res.msg || "Something went wrong");
+      return;
+    }
   };
 
   return (
     <ScreenWrapper>
       <View style={styles.container}>
         <BackButton iconSize={28} />
-
         <View style={{ gap: 5, marginTop: spacingY._20 }}>
           <Typo size={30} fontWeight={"800"}>
             {"Let's"}
@@ -47,7 +51,6 @@ const Register = () => {
             Get Started
           </Typo>
         </View>
-
         <View style={styles.form}>
           <Typo size={16} color={colors.textLighter}>
             Create an account to track all your expenses
@@ -74,7 +77,6 @@ const Register = () => {
               />
             }
           />
-
           <Input
             placeholder="Enter your password"
             secureTextEntry
